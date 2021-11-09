@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "ListKit",
+        "repositoryURL": "https://github.com/ReactComponentKit/ListKit.git",
+        "state": {
+          "branch": null,
+          "revision": "d484aec496b095bc8d63db52e9e54f35cc42ba9e",
+          "version": "1.1.1"
+        }
+      },
+      {
+        "package": "Redux",
+        "repositoryURL": "https://github.com/ReactComponentKit/Redux.git",
+        "state": {
+          "branch": null,
+          "revision": "7e6c748b2437cf278a9b1b44bac6b836b418fb62",
+          "version": "1.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
