@@ -8,7 +8,7 @@
 import Foundation
 
 struct Todo: Equatable {
-    let id: String
+    let id: Int
     var title: String
     var date: Date
     var done: Bool

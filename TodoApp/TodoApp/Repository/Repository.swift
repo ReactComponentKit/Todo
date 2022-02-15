@@ -18,4 +18,5 @@ protocol Repository {
     func insert(todo: Todo) async throws
     func delete(todo: Todo) async throws
     func update(todo: Todo) async throws
+    func deleteAll() async throws
 }

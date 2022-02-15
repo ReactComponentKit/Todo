@@ -66,6 +66,17 @@ class TodoListStore: Store<TodoListState> {
         }
     }
     
+    func deleteAllTodoAction() async {
+        do {
+            try await repository.deleteAll()
+            await loadTodoListAction()
+        } catch {
+            if let err = error as? RepositoryError {
+                commit(mutation: SET_ERROR, payload: err)
+            }
+        }
+    }
+    
     func doneTodoAction(todo: Todo) async {
         do {
             var mutatedTodo = todo

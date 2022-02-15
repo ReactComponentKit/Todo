@@ -10,12 +10,15 @@ import UIKit
 class TodoListViewController: UIViewController {
     
     private lazy var store: TodoListStore = {
-        TodoListStore(repository: InMemoryRepository())
+        TodoListStore(repository: LocalDBRepository())
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        Task {
+            await self.store.loadTodoListAction()
+        }
     }
 }
 
