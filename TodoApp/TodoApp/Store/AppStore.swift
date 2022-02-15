@@ -13,7 +13,7 @@ struct AppState: State {
 }
 
 class AppStore: Store<AppState> {
-    static let shared = AppStore(repository: LocalDBRepository())
+    static let shared = AppStore(repository: InMemoryRepository())
     
     let todoList: TodoListStore
 

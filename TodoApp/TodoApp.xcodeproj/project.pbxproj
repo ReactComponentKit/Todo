@@ -11,6 +11,9 @@
 		4E56A53427BBC73E00DB86D2 /* LocalDBTodoListStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56A53327BBC73E00DB86D2 /* LocalDBTodoListStoreTests.swift */; };
 		4E56A53727BBD53800DB86D2 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 4E56A53627BBD53800DB86D2 /* GRDB */; };
 		4E56A53A27BBDD4700DB86D2 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56A53927BBDD4700DB86D2 /* DateUtils.swift */; };
+		4E56A53D27BBEB4500DB86D2 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4E56A53C27BBEB4500DB86D2 /* SnapKit */; };
+		4E56A54027BBEC7E00DB86D2 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56A53F27BBEC7E00DB86D2 /* TodoItem.swift */; };
+		4E56A54227BBEF7F00DB86D2 /* EmptyTodoItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56A54127BBEF7F00DB86D2 /* EmptyTodoItems.swift */; };
 		4EEEBCB9273A9952003CF2F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEBCB8273A9952003CF2F0 /* AppDelegate.swift */; };
 		4EEEBCBB273A9952003CF2F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEBCBA273A9952003CF2F0 /* SceneDelegate.swift */; };
 		4EEEBCBD273A9952003CF2F0 /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEBCBC273A9952003CF2F0 /* TodoListViewController.swift */; };
@@ -49,6 +52,8 @@
 		4E56A52E27BBC63300DB86D2 /* LocalDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDB.swift; sourceTree = "<group>"; };
 		4E56A53327BBC73E00DB86D2 /* LocalDBTodoListStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDBTodoListStoreTests.swift; sourceTree = "<group>"; };
 		4E56A53927BBDD4700DB86D2 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
+		4E56A53F27BBEC7E00DB86D2 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
+		4E56A54127BBEF7F00DB86D2 /* EmptyTodoItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTodoItems.swift; sourceTree = "<group>"; };
 		4EEEBCB5273A9952003CF2F0 /* TodoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EEEBCB8273A9952003CF2F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4EEEBCBA273A9952003CF2F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +79,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EEEBCEA273A99A1003CF2F0 /* Redux in Frameworks */,
+				4E56A53D27BBEB4500DB86D2 /* SnapKit in Frameworks */,
 				4EEEBCED273A99B8003CF2F0 /* ListKit in Frameworks */,
 				4E56A53727BBD53800DB86D2 /* GRDB in Frameworks */,
 			);
@@ -104,6 +110,15 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		4E56A53E27BBEC6E00DB86D2 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				4E56A53F27BBEC7E00DB86D2 /* TodoItem.swift */,
+				4E56A54127BBEF7F00DB86D2 /* EmptyTodoItems.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		4EEEBCAC273A9952003CF2F0 = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +146,7 @@
 				4EEEBCF8273A9FBE003CF2F0 /* Repository */,
 				4EEEBCF3273A9C0E003CF2F0 /* Store */,
 				4EEEBCF0273A9BD8003CF2F0 /* TodoList */,
+				4E56A53E27BBEC6E00DB86D2 /* Components */,
 				4EEEBCB8273A9952003CF2F0 /* AppDelegate.swift */,
 				4EEEBCBA273A9952003CF2F0 /* SceneDelegate.swift */,
 				4EEEBCC1273A9953003CF2F0 /* Assets.xcassets */,
@@ -206,6 +222,7 @@
 				4EEEBCE9273A99A1003CF2F0 /* Redux */,
 				4EEEBCEC273A99B8003CF2F0 /* ListKit */,
 				4E56A53627BBD53800DB86D2 /* GRDB */,
+				4E56A53C27BBEB4500DB86D2 /* SnapKit */,
 			);
 			productName = TodoApp;
 			productReference = 4EEEBCB5273A9952003CF2F0 /* TodoApp.app */;
@@ -283,6 +300,7 @@
 				4EEEBCE8273A99A1003CF2F0 /* XCRemoteSwiftPackageReference "Redux" */,
 				4EEEBCEB273A99B8003CF2F0 /* XCRemoteSwiftPackageReference "ListKit" */,
 				4E56A53527BBD53800DB86D2 /* XCRemoteSwiftPackageReference "GRDB.swift" */,
+				4E56A53B27BBEB4500DB86D2 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 4EEEBCB6273A9952003CF2F0 /* Products */;
 			projectDirPath = "";
@@ -326,11 +344,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E56A54027BBEC7E00DB86D2 /* TodoItem.swift in Sources */,
 				4E56A52F27BBC63300DB86D2 /* LocalDB.swift in Sources */,
 				4EEEBCF7273A9E37003CF2F0 /* Todo.swift in Sources */,
 				4EEEBCFA273A9FD1003CF2F0 /* InMemory.swift in Sources */,
 				4EEEBCBD273A9952003CF2F0 /* TodoListViewController.swift in Sources */,
 				4E56A53A27BBDD4700DB86D2 /* DateUtils.swift in Sources */,
+				4E56A54227BBEF7F00DB86D2 /* EmptyTodoItems.swift in Sources */,
 				4EEEBCB9273A9952003CF2F0 /* AppDelegate.swift in Sources */,
 				4EEEBCBB273A9952003CF2F0 /* SceneDelegate.swift in Sources */,
 				4EEEBCF5273A9C1E003CF2F0 /* TodoListStore.swift in Sources */,
@@ -700,6 +720,14 @@
 				kind = branch;
 			};
 		};
+		4E56A53B27BBEB4500DB86D2 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
 		4EEEBCE8273A99A1003CF2F0 /* XCRemoteSwiftPackageReference "Redux" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactComponentKit/Redux.git";
@@ -723,6 +751,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4E56A53527BBD53800DB86D2 /* XCRemoteSwiftPackageReference "GRDB.swift" */;
 			productName = GRDB;
+		};
+		4E56A53C27BBEB4500DB86D2 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E56A53B27BBEB4500DB86D2 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 		4EEEBCE9273A99A1003CF2F0 /* Redux */ = {
 			isa = XCSwiftPackageProductDependency;
