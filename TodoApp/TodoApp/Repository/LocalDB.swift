@@ -29,6 +29,7 @@ class LocalDBRepository: Repository {
             CREATE TABLE IF NOT EXISTS todos(
                 id INTEGER PRIMARY KEY,
                 title TEXT NOT NULL DEFAULT '',
+                content TEXT NOT NULL DEFAULT '',
                 date TEXT NOT NULL DEFAULT '',
                 done INTEGER DEFAULT 0
             );
@@ -38,12 +39,13 @@ class LocalDBRepository: Repository {
     
     func loadTodoList() async throws -> [Todo] {
         let rows = try await pool.read({ db in
-            return try Row.fetchAll(db, sql: "SELECT id, title, date, done FROM todos")
+            return try Row.fetchAll(db, sql: "SELECT id, title, content, date, done FROM todos")
         })
         let todos = rows.map { row in
             return Todo(
                 id: row["id"],
                 title: row["title"],
+                content: row["content"],
                 date: DateUtils.stringToDate(row["date"]),
                 done: row["done"] == 1
             )
@@ -53,9 +55,10 @@ class LocalDBRepository: Repository {
     
     func insert(todo: Todo) async throws {
         try await pool.write({ db in
-            try db.execute(sql: "INSERT INTO todos VALUES(?, ?, ?, ?)", arguments: [
+            try db.execute(sql: "INSERT INTO todos VALUES(?, ?, ?, ?, ?)", arguments: [
                 todo.id,
                 todo.title,
+                todo.content,
                 DateUtils.dateToString(todo.date),
                 todo.done ? 1 : 0
             ])
@@ -70,8 +73,9 @@ class LocalDBRepository: Repository {
     
     func update(todo: Todo) async throws {
         try await pool.write({ db in
-            try db.execute(sql: "UPDATE todos SET title = ?, date = ?, done = ? WHERE id = ?", arguments: [
+            try db.execute(sql: "UPDATE todos SET title = ?, content = ?, date = ?, done = ? WHERE id = ?", arguments: [
                 todo.title,
+                todo.content,
                 DateUtils.dateToString(todo.date),
                 todo.done ? 1 : 0,
                 todo.id

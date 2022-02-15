@@ -27,14 +27,14 @@ class InMemoryTodoListStoreTests: XCTestCase {
     }
     
     func test_ToDo_추가하기() async {
-        let todo = Todo(id: UUID().hashValue, title: "로또 1등 당첨금 수령하기", date: Date(), done: false)
+        let todo = Todo(id: UUID().hashValue, title: "로또 1등 당첨금 수령하기", content: "", date: Date(), done: false)
         await store.insertTodoAction(todo: todo)
         XCTAssertEqual(store.state.todoList.count, 5)
         XCTAssertEqual(store.state.todoList.last!, todo)
     }
     
     func test_Todo_모두_삭제하기() async {
-        let todo = Todo(id: UUID().hashValue, title: "로또 1등 당첨금 수령하기", date: Date(), done: false)
+        let todo = Todo(id: UUID().hashValue, title: "로또 1등 당첨금 수령하기", content: "", date: Date(), done: false)
         await store.insertTodoAction(todo: todo)
         XCTAssertEqual(store.state.todoList.count, 5)
         XCTAssertEqual(store.state.todoList.last!, todo)

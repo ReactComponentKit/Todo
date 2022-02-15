@@ -10,10 +10,10 @@ import Foundation
 
 class InMemoryRepository: Repository {
     private var todos = [
-        Todo(id: UUID().hashValue, title: "슈퍼마켓 가기", date: Date(), done: false),
-        Todo(id: UUID().hashValue, title: "영화 보기", date: Date(), done: false),
-        Todo(id: UUID().hashValue, title: "학원 가기", date: Date(), done: false),
-        Todo(id: UUID().hashValue, title: "우유 사기", date: Date(), done: false),
+        Todo(id: UUID().hashValue, title: "슈퍼마켓 가기", content: "", date: Date(), done: false),
+        Todo(id: UUID().hashValue, title: "영화 보기", content: "", date: Date(), done: false),
+        Todo(id: UUID().hashValue, title: "학원 가기", content: "", date: Date(), done: false),
+        Todo(id: UUID().hashValue, title: "우유 사기", content: "", date: Date(), done: false),
     ]
     
     func loadTodoList() async -> [Todo] {

@@ -32,7 +32,7 @@ class LocalDBTodoListStoreTests: XCTestCase {
     
     func test_ToDo_추가하기() async {
         await store.deleteAllTodoAction()
-        let todo = Todo(id: 0, title: "로또 1등 당첨금 수령하기", date: Date(), done: false)
+        let todo = Todo(id: 0, title: "로또 1등 당첨금 수령하기", content: "", date: Date(), done: false)
         await store.insertTodoAction(todo: todo)
         XCTAssertEqual(store.state.todoList.count, 1)
         XCTAssertEqual(store.state.todoList.last!.id, todo.id)
@@ -44,7 +44,7 @@ class LocalDBTodoListStoreTests: XCTestCase {
     func test_Todo_모두_삭제하기() async {
         await store.deleteAllTodoAction()
         
-        let todo = Todo(id: UUID().hashValue, title: "로또 1등 당첨금 수령하기", date: Date(), done: false)
+        let todo = Todo(id: UUID().hashValue, title: "로또 1등 당첨금 수령하기", content: "", date: Date(), done: false)
         await store.insertTodoAction(todo: todo)
         XCTAssertEqual(store.state.todoList.count, 1)
         XCTAssertEqual(store.state.todoList.last!.id, todo.id)
@@ -61,8 +61,8 @@ class LocalDBTodoListStoreTests: XCTestCase {
         // 처음에는 0개이다.
         XCTAssertEqual(store.state.todoList.count, 0)
         
-        let todo1 = Todo(id: UUID().hashValue, title: "슈퍼마켓 가기", date: Date(), done: false)
-        let todo2 = Todo(id: UUID().hashValue, title: "영화 보기", date: Date(), done: false)
+        let todo1 = Todo(id: UUID().hashValue, title: "슈퍼마켓 가기", content: "", date: Date(), done: false)
+        let todo2 = Todo(id: UUID().hashValue, title: "영화 보기", content: "", date: Date(), done: false)
         
         await store.insertTodoAction(todo: todo1)
         await store.insertTodoAction(todo: todo2)
@@ -89,7 +89,7 @@ class LocalDBTodoListStoreTests: XCTestCase {
         // 처음에는 0개이다.
         XCTAssertEqual(store.state.todoList.count, 0)
         
-        let todo1 = Todo(id: UUID().hashValue, title: "슈퍼마켓 가기", date: Date(), done: false)
+        let todo1 = Todo(id: UUID().hashValue, title: "슈퍼마켓 가기", content: "", date: Date(), done: false)
         await store.insertTodoAction(todo: todo1)
         
         // 로드한다.
@@ -107,7 +107,7 @@ class LocalDBTodoListStoreTests: XCTestCase {
         // 처음에는 0개이다.
         XCTAssertEqual(store.state.todoList.count, 0)
         
-        let todo1 = Todo(id: UUID().hashValue, title: "슈퍼마켓 가기", date: Date(), done: false)
+        let todo1 = Todo(id: UUID().hashValue, title: "슈퍼마켓 가기", content: "", date: Date(), done: false)
         await store.insertTodoAction(todo: todo1)
         
         // 로드한다.
@@ -129,7 +129,7 @@ class LocalDBTodoListStoreTests: XCTestCase {
         // 처음에는 0개이다.
         XCTAssertEqual(store.state.todoList.count, 0)
         
-        let todo1 = Todo(id: UUID().hashValue, title: "슈퍼마켓 가기", date: Date(), done: false)
+        let todo1 = Todo(id: UUID().hashValue, title: "슈퍼마켓 가기", content: "", date: Date(), done: false)
         await store.insertTodoAction(todo: todo1)
         
         // 로드한다.
@@ -149,7 +149,7 @@ class LocalDBTodoListStoreTests: XCTestCase {
         // 처음에는 0개이다.
         XCTAssertEqual(store.state.todoList.count, 0)
         
-        let todo1 = Todo(id: UUID().hashValue, title: "슈퍼마켓 가기", date: Date(), done: false)
+        let todo1 = Todo(id: UUID().hashValue, title: "슈퍼마켓 가기", content: "", date: Date(), done: false)
         await store.insertTodoAction(todo: todo1)
         
         // 로드한다.
@@ -173,7 +173,7 @@ class LocalDBTodoListStoreTests: XCTestCase {
         // 처음에는 0개이다.
         XCTAssertEqual(store.state.todoList.count, 0)
         
-        let todo1 = Todo(id: UUID().hashValue, title: "슈퍼마켓 가기", date: Date(), done: false)
+        let todo1 = Todo(id: UUID().hashValue, title: "슈퍼마켓 가기", content: "", date: Date(), done: false)
         await store.insertTodoAction(todo: todo1)
         
         // 로드한다.

@@ -10,6 +10,7 @@ import Foundation
 struct Todo: Equatable {
     let id: Int
     var title: String
+    var content: String
     var date: Date
     var done: Bool
 }
