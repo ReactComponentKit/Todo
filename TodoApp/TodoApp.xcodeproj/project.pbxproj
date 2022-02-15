@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E56A52F27BBC63300DB86D2 /* LocalDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E56A52E27BBC63300DB86D2 /* LocalDB.swift */; };
 		4EEEBCB9273A9952003CF2F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEBCB8273A9952003CF2F0 /* AppDelegate.swift */; };
 		4EEEBCBB273A9952003CF2F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEBCBA273A9952003CF2F0 /* SceneDelegate.swift */; };
 		4EEEBCBD273A9952003CF2F0 /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEBCBC273A9952003CF2F0 /* TodoListViewController.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4E56A52E27BBC63300DB86D2 /* LocalDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDB.swift; sourceTree = "<group>"; };
 		4EEEBCB5273A9952003CF2F0 /* TodoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EEEBCB8273A9952003CF2F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4EEEBCBA273A9952003CF2F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			children = (
 				4EEEBCFB273A9FE3003CF2F0 /* Repository.swift */,
 				4EEEBCF9273A9FD1003CF2F0 /* InMemory.swift */,
+				4E56A52E27BBC63300DB86D2 /* LocalDB.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E56A52F27BBC63300DB86D2 /* LocalDB.swift in Sources */,
 				4EEEBCF7273A9E37003CF2F0 /* Todo.swift in Sources */,
 				4EEEBCFA273A9FD1003CF2F0 /* InMemory.swift in Sources */,
 				4EEEBCBD273A9952003CF2F0 /* TodoListViewController.swift in Sources */,

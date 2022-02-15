@@ -20,20 +20,20 @@ class InMemoryTodoListStoreTests: XCTestCase {
         store = nil
     }
     
-    func test_ToDo목록불러오기() async {
+    func test_ToDo_목록_불러오기() async {
         await store.loadTodoListAction()
         XCTAssertGreaterThan(store.state.todoList.count, 0)
         XCTAssertEqual(store.state.todoList.count, 4)
     }
     
-    func test_ToDo추가하기() async {
+    func test_ToDo_추가하기() async {
         let todo = Todo(id: UUID().uuidString, title: "로또 1등 당첨금 수령하기", date: Date(), done: false)
         await store.insertTodoAction(todo: todo)
         XCTAssertEqual(store.state.todoList.count, 5)
         XCTAssertEqual(store.state.todoList.last!, todo)
     }
     
-    func test_Todo아디이로_삭제하기() async {
+    func test_Todo_아디이로_삭제하기() async {
         // 처음에는 0개이다.
         XCTAssertEqual(store.state.todoList.count, 0)
         // 로드한다.
@@ -57,7 +57,7 @@ class InMemoryTodoListStoreTests: XCTestCase {
         XCTAssertEqual(store.state.todoList[0].done, true)
     }
     
-    func test_Todo_완료해제하기() async {
+    func test_Todo_완료_해제하기() async {
         // 처음에는 0개이다.
         XCTAssertEqual(store.state.todoList.count, 0)
         // 로드한다.
