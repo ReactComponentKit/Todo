@@ -24,6 +24,10 @@ final class TodoListViewController: UIViewController {
         case list
     }
     
+    private lazy var addTodoButtonItem = {
+        return UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(onClickAddTodoButton(_:)))
+    }()
+    
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: ComposeRenderer.emptyLayout)
         return collectionView
@@ -35,6 +39,7 @@ final class TodoListViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .systemBackground
         setupTitle()
+        setupAddButton()
         setupViews()
         setupStore()
         loadTodoList()
@@ -42,6 +47,10 @@ final class TodoListViewController: UIViewController {
     
     private func setupTitle() {
         self.title = "ToDo!"
+    }
+    
+    private func setupAddButton() {
+        self.navigationItem.rightBarButtonItem = self.addTodoButtonItem
     }
     
     private func setupViews() {
@@ -80,7 +89,14 @@ final class TodoListViewController: UIViewController {
                     }
                 }
             }
+            .contentInsets(top: 8, leading: 16, bottom: 8, trailing: 16)
         }
     }
 }
 
+extension TodoListViewController {
+    @objc
+    func onClickAddTodoButton(_ sender: UIBarButtonItem) {
+        
+    }
+}
