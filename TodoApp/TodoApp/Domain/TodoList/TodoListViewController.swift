@@ -97,6 +97,7 @@ final class TodoListViewController: UIViewController {
 extension TodoListViewController {
     @objc
     func onClickAddTodoButton(_ sender: UIBarButtonItem) {
-        
+        let nvc = UINavigationController(rootViewController: TodoAddViewController())
+        self.present(nvc, animated: true)
     }
 }

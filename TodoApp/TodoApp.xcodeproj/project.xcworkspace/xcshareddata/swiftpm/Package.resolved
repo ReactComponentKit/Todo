@@ -1,43 +1,41 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "GRDB",
-        "repositoryURL": "https://github.com/groue/GRDB.swift.git",
-        "state": {
-          "branch": "master",
-          "revision": "9b0e41ad586d4a52d67143a73732e99e38c29d86",
-          "version": null
-        }
-      },
-      {
-        "package": "ListKit",
-        "repositoryURL": "https://github.com/ReactComponentKit/ListKit.git",
-        "state": {
-          "branch": null,
-          "revision": "d484aec496b095bc8d63db52e9e54f35cc42ba9e",
-          "version": "1.1.1"
-        }
-      },
-      {
-        "package": "Redux",
-        "repositoryURL": "https://github.com/ReactComponentKit/Redux.git",
-        "state": {
-          "branch": null,
-          "revision": "e45114a4852956bacd1680011506d44a498c675d",
-          "version": "1.2.0"
-        }
-      },
-      {
-        "package": "SnapKit",
-        "repositoryURL": "git@github.com:SnapKit/SnapKit.git",
-        "state": {
-          "branch": null,
-          "revision": "d458564516e5676af9c70b4f4b2a9178294f1bc6",
-          "version": "5.0.1"
-        }
+  "pins" : [
+    {
+      "identity" : "grdb.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/groue/GRDB.swift.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "9b0e41ad586d4a52d67143a73732e99e38c29d86"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "listkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ReactComponentKit/ListKit.git",
+      "state" : {
+        "revision" : "d484aec496b095bc8d63db52e9e54f35cc42ba9e",
+        "version" : "1.1.1"
+      }
+    },
+    {
+      "identity" : "redux",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ReactComponentKit/Redux.git",
+      "state" : {
+        "revision" : "e4361b567ec9b0bcbb18b98592e527b3a7716b5c",
+        "version" : "1.2.1"
+      }
+    },
+    {
+      "identity" : "snapkit",
+      "kind" : "remoteSourceControl",
+      "location" : "git@github.com:SnapKit/SnapKit.git",
+      "state" : {
+        "revision" : "d458564516e5676af9c70b4f4b2a9178294f1bc6",
+        "version" : "5.0.1"
+      }
+    }
+  ],
+  "version" : 2
 }
