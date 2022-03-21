@@ -78,6 +78,10 @@ final class TodoAddViewController: UIViewController {
                     AddTodoTitle(title: store.todoAdd.state.title) { [weak store] newTitle in
                         store?.todoAdd.set(title: newTitle)
                     }
+                    // Don't use two-way binding
+                    AddTodoContent(content: store.todoAdd.state.content) { newContent in
+                        print(newContent)
+                    }
                 }
             }
             .contentInsets(top: 8, leading: 16, bottom: 8, trailing: 16)

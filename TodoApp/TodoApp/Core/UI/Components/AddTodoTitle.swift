@@ -43,7 +43,7 @@ struct AddTodoTitle: Component {
 }
 
 
-final class AddTodoTitleView: UIView, UITextFieldDelegate {
+final class AddTodoTitleView: UIView {
     
     var onTitleChanged: ((String) -> Void)?
     
@@ -59,16 +59,6 @@ final class AddTodoTitleView: UIView, UITextFieldDelegate {
         textField.delegate = self
         return textField
     }()
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let textFieldRange = NSRange(location: 0, length: textField.text?.count ?? 0)
-        if NSEqualRanges(range, textFieldRange) && string.count == 0 {
-            onTitleChanged?("")
-        } else {
-            onTitleChanged?(textField.text ?? "")
-        }
-        return true
-    }
     
     lazy var stackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [self.titleLabel, self.titleTextField])
@@ -119,3 +109,14 @@ final class AddTodoTitleView: UIView, UITextFieldDelegate {
     }
 }
     
+extension AddTodoTitleView: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let textFieldRange = NSRange(location: 0, length: textField.text?.count ?? 0)
+        if NSEqualRanges(range, textFieldRange) && string.count == 0 {
+            onTitleChanged?("")
+        } else {
+            onTitleChanged?(textField.text ?? "")
+        }
+        return true
+    }
+}
