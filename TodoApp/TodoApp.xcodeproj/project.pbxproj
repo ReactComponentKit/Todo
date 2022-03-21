@@ -33,6 +33,7 @@
 		4EF24A0727E89B6100630D09 /* AddTodoTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF24A0627E89B6100630D09 /* AddTodoTitle.swift */; };
 		4EF24A0B27E8A20C00630D09 /* Redux in Frameworks */ = {isa = PBXBuildFile; productRef = 4EF24A0A27E8A20C00630D09 /* Redux */; };
 		4EF24A0D27E8A56200630D09 /* AddTodoContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF24A0C27E8A56200630D09 /* AddTodoContent.swift */; };
+		4EF24A0F27E8A93400630D09 /* AddTodoDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF24A0E27E8A93400630D09 /* AddTodoDate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		4EF24A0427E89AA500630D09 /* TodoAddStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoAddStore.swift; sourceTree = "<group>"; };
 		4EF24A0627E89B6100630D09 /* AddTodoTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoTitle.swift; sourceTree = "<group>"; };
 		4EF24A0C27E8A56200630D09 /* AddTodoContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoContent.swift; sourceTree = "<group>"; };
+		4EF24A0E27E8A93400630D09 /* AddTodoDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoDate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 			children = (
 				4EF24A0627E89B6100630D09 /* AddTodoTitle.swift */,
 				4EF24A0C27E8A56200630D09 /* AddTodoContent.swift */,
+				4EF24A0E27E8A93400630D09 /* AddTodoDate.swift */,
 				4E56A53F27BBEC7E00DB86D2 /* TodoItem.swift */,
 				4E56A54127BBEF7F00DB86D2 /* EmptyTodoItems.swift */,
 			);
@@ -231,7 +234,6 @@
 		4EF249FD27E894C900630D09 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				4EF24A0827E89BFC00630D09 /* Colors */,
 				4EF24A0027E8951A00630D09 /* Model */,
 				4EF249FE27E894D400630D09 /* UI */,
 			);
@@ -269,13 +271,6 @@
 				4EF24A0227E8954400630D09 /* TodoAddViewController.swift */,
 			);
 			path = TodoAdd;
-			sourceTree = "<group>";
-		};
-		4EF24A0827E89BFC00630D09 /* Colors */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Colors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -436,6 +431,7 @@
 				4EEEBCF5273A9C1E003CF2F0 /* TodoListStore.swift in Sources */,
 				4EEEBCEF273A9A5D003CF2F0 /* AppStore.swift in Sources */,
 				4EEEBCFC273A9FE3003CF2F0 /* Repository.swift in Sources */,
+				4EF24A0F27E8A93400630D09 /* AddTodoDate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
