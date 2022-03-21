@@ -156,7 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				4EF249FF27E894EF00630D09 /* App */,
-				4EF249FA27E8941C00630D09 /* Domain */,
+				4EF249FA27E8941C00630D09 /* Scenes */,
 				4EF249FD27E894C900630D09 /* Core */,
 				4EEEBCF3273A9C0E003CF2F0 /* Store */,
 				4EEEBCF8273A9FBE003CF2F0 /* Repository */,
@@ -222,13 +222,13 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
-		4EF249FA27E8941C00630D09 /* Domain */ = {
+		4EF249FA27E8941C00630D09 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
 				4EF24A0127E8953100630D09 /* TodoAdd */,
 				4EEEBCF0273A9BD8003CF2F0 /* TodoList */,
 			);
-			path = Domain;
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		4EF249FD27E894C900630D09 /* Core */ = {
