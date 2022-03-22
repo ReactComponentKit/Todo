@@ -57,14 +57,14 @@ final class TodoAddViewController: UIViewController {
     }
     
     private func setupStore() {
-        // it is not necessary if we've injected a new store but we use a singleton store.
-        store.todoAdd.reset()
         store.$didFinishAddTodo
             .receive(on: RunLoop.main)
             .filter { $0 == true }
             .compactMap { $0 }
             .sink { [weak self] value in
                 if value {
+                    // it is not necessary if we've injected a new store but we use a singleton store.
+                    self?.store.todoAdd.reset()
                     self?.dismiss(animated: true)
                 } else {
                     let message = self?.store.todoAdd.state.error.localizedDescription
