@@ -30,10 +30,10 @@
 		4EEEBCFC273A9FE3003CF2F0 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEBCFB273A9FE3003CF2F0 /* Repository.swift */; };
 		4EF24A0327E8954400630D09 /* TodoAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF24A0227E8954400630D09 /* TodoAddViewController.swift */; };
 		4EF24A0527E89AA500630D09 /* TodoAddStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF24A0427E89AA500630D09 /* TodoAddStore.swift */; };
-		4EF24A0727E89B6100630D09 /* AddTodoTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF24A0627E89B6100630D09 /* AddTodoTitle.swift */; };
+		4EF24A0727E89B6100630D09 /* TodoTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF24A0627E89B6100630D09 /* TodoTitle.swift */; };
 		4EF24A0B27E8A20C00630D09 /* Redux in Frameworks */ = {isa = PBXBuildFile; productRef = 4EF24A0A27E8A20C00630D09 /* Redux */; };
-		4EF24A0D27E8A56200630D09 /* AddTodoContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF24A0C27E8A56200630D09 /* AddTodoContent.swift */; };
-		4EF24A0F27E8A93400630D09 /* AddTodoDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF24A0E27E8A93400630D09 /* AddTodoDate.swift */; };
+		4EF24A0D27E8A56200630D09 /* TodoContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF24A0C27E8A56200630D09 /* TodoContent.swift */; };
+		4EF24A0F27E8A93400630D09 /* TodoDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF24A0E27E8A93400630D09 /* TodoDate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,9 +78,9 @@
 		4EEEBCFB273A9FE3003CF2F0 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		4EF24A0227E8954400630D09 /* TodoAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoAddViewController.swift; sourceTree = "<group>"; };
 		4EF24A0427E89AA500630D09 /* TodoAddStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoAddStore.swift; sourceTree = "<group>"; };
-		4EF24A0627E89B6100630D09 /* AddTodoTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoTitle.swift; sourceTree = "<group>"; };
-		4EF24A0C27E8A56200630D09 /* AddTodoContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoContent.swift; sourceTree = "<group>"; };
-		4EF24A0E27E8A93400630D09 /* AddTodoDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoDate.swift; sourceTree = "<group>"; };
+		4EF24A0627E89B6100630D09 /* TodoTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTitle.swift; sourceTree = "<group>"; };
+		4EF24A0C27E8A56200630D09 /* TodoContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoContent.swift; sourceTree = "<group>"; };
+		4EF24A0E27E8A93400630D09 /* TodoDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,9 +123,9 @@
 		4E56A53E27BBEC6E00DB86D2 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				4EF24A0627E89B6100630D09 /* AddTodoTitle.swift */,
-				4EF24A0C27E8A56200630D09 /* AddTodoContent.swift */,
-				4EF24A0E27E8A93400630D09 /* AddTodoDate.swift */,
+				4EF24A0627E89B6100630D09 /* TodoTitle.swift */,
+				4EF24A0C27E8A56200630D09 /* TodoContent.swift */,
+				4EF24A0E27E8A93400630D09 /* TodoDate.swift */,
 				4E56A53F27BBEC7E00DB86D2 /* TodoItem.swift */,
 				4E56A54127BBEF7F00DB86D2 /* EmptyTodoItems.swift */,
 			);
@@ -424,14 +424,14 @@
 				4E56A53A27BBDD4700DB86D2 /* DateUtils.swift in Sources */,
 				4E56A54227BBEF7F00DB86D2 /* EmptyTodoItems.swift in Sources */,
 				4EEEBCB9273A9952003CF2F0 /* AppDelegate.swift in Sources */,
-				4EF24A0D27E8A56200630D09 /* AddTodoContent.swift in Sources */,
-				4EF24A0727E89B6100630D09 /* AddTodoTitle.swift in Sources */,
+				4EF24A0D27E8A56200630D09 /* TodoContent.swift in Sources */,
+				4EF24A0727E89B6100630D09 /* TodoTitle.swift in Sources */,
 				4EEEBCBB273A9952003CF2F0 /* SceneDelegate.swift in Sources */,
 				4EF24A0327E8954400630D09 /* TodoAddViewController.swift in Sources */,
 				4EEEBCF5273A9C1E003CF2F0 /* TodoListStore.swift in Sources */,
 				4EEEBCEF273A9A5D003CF2F0 /* AppStore.swift in Sources */,
 				4EEEBCFC273A9FE3003CF2F0 /* Repository.swift in Sources */,
-				4EF24A0F27E8A93400630D09 /* AddTodoDate.swift in Sources */,
+				4EF24A0F27E8A93400630D09 /* TodoDate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

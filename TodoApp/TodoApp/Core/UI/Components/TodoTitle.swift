@@ -1,5 +1,5 @@
 //
-//  AddTodoDate.swift
+//  AddTodoTitle.swift
 //  TodoApp
 //
 //  Created by burt on 2022/03/21.
@@ -9,23 +9,23 @@ import UIKit
 import SnapKit
 import ListKit
 
-struct AddTodoDate: Component {
-    typealias Content = AddTodoDateView
+struct TodoTitle: Component {
+    typealias Content = TodoTitleView
     
-    let date: Date
-    var onDateChanged: ((Date) -> Void)?
+    let title: String
+    var onTitleChanged: ((String) -> Void)?
     
     var id: AnyHashable {
         UUID()
     }
     
-    init(date: Date, onDateChanged: @escaping (Date) -> Void) {
-        self.date = date
-        self.onDateChanged = onDateChanged
+    init(title: String, onTitleChanged: @escaping (String) -> Void) {
+        self.title = title
+        self.onTitleChanged = onTitleChanged
     }
     
-    func contentView() -> AddTodoDateView {
-        return AddTodoDateView()
+    func contentView() -> TodoTitleView {
+        return TodoTitleView()
     }
     
     func layoutSize() -> NSCollectionLayoutSize {
@@ -36,36 +36,32 @@ struct AddTodoDate: Component {
         return .init(leading: nil, top: nil, trailing: nil, bottom: .fixed(8.0))
     }
     
-    func render(in content: AddTodoDateView) {
-        content.datePicker.date = date
-        content.onDateChanged = onDateChanged
+    func render(in content: TodoTitleView) {
+        content.titleTextField.text = title
+        content.onTitleChanged = onTitleChanged
     }
 }
 
 
-final class AddTodoDateView: UIView {
+final class TodoTitleView: UIView {
     
-    var onDateChanged: ((Date) -> Void)?
+    var onTitleChanged: ((String) -> Void)?
     
-    lazy var dateLabel: UILabel = {
+    lazy var titleLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = "DATE"
+        label.text = "TITLE"
         label.font = UIFont.systemFont(ofSize: UIFont.smallSystemFontSize)
         return label
     }()
     
-    lazy var datePicker: UIDatePicker = {
-        let picker = UIDatePicker(frame: .zero)
-        picker.preferredDatePickerStyle = .automatic
-        picker.datePickerMode = .dateAndTime
-        picker.locale = Locale(identifier: "ko-KR")
-        picker.timeZone = .autoupdatingCurrent
-        picker.addTarget(self, action: #selector(handleDatePicker(_:)), for: .valueChanged)
-        return picker
+    lazy var titleTextField: UITextField = {
+        let textField = UITextField(frame: .zero)
+        textField.delegate = self
+        return textField
     }()
     
     lazy var stackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [self.dateLabel, self.datePicker])
+        let stack = UIStackView(arrangedSubviews: [self.titleLabel, self.titleTextField])
         stack.axis = .vertical
         stack.alignment = .top
         stack.spacing = 6
@@ -80,6 +76,13 @@ final class AddTodoDateView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError()
+    }
+        
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if (titleTextField.canBecomeFirstResponder) {
+            titleTextField.becomeFirstResponder()
+        }
     }
     
     func setupAppearance() {
@@ -100,15 +103,24 @@ final class AddTodoDateView: UIView {
             make.trailing.equalToSuperview().offset(-8)
             make.bottom.equalToSuperview().offset(-16)
         }
-        datePicker.snp.makeConstraints { make in
+        titleTextField.snp.makeConstraints { make in
             make.width.equalToSuperview()
         }
     }
+}
     
-    @objc
-    func handleDatePicker(_ picker: UIDatePicker) {
-        onDateChanged?(picker.date)
+extension TodoTitleView: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let textFieldRange = NSRange(location: 0, length: textField.text?.count ?? 0)
+        if NSEqualRanges(range, textFieldRange) && string.count == 0 {
+            onTitleChanged?("")
+        } else {
+            onTitleChanged?(textField.text ?? "")
+        }
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        onTitleChanged?(textField.text ?? "")
     }
 }
-
-

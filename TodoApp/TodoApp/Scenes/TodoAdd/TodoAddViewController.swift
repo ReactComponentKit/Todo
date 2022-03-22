@@ -11,6 +11,7 @@ import SnapKit
 import ListKit
 
 final class TodoAddViewController: UIViewController {
+    // It is similar to @EnvironmentObject on SwiftUI.
     private var store = AppStore.shared
     private var cancellables = Set<AnyCancellable>()
     
@@ -79,15 +80,15 @@ final class TodoAddViewController: UIViewController {
             Section(id: Sections.group) {
                 VGroup(width: .fractionalWidth(1.0), height: .estimated(30)) {
                     // Don't use two-way binding
-                    AddTodoTitle(title: store.todoAdd.state.title) { [weak store] newTitle in
+                    TodoTitle(title: store.todoAdd.state.title) { [weak store] newTitle in
                         store?.todoAdd.set(title: newTitle)
                     }
                     // Don't use two-way binding
-                    AddTodoContent(content: store.todoAdd.state.content) { [weak store] newContent in
+                    TodoContent(content: store.todoAdd.state.content) { [weak store] newContent in
                         store?.todoAdd.set(content: newContent)
                     }
                     // Don't use two-way binding
-                    AddTodoDate(date: store.todoAdd.state.date) { [weak store] newDate in
+                    TodoDate(date: store.todoAdd.state.date) { [weak store] newDate in
                         store?.todoAdd.set(date: newDate)
                     }
                 }

@@ -11,7 +11,7 @@ import SnapKit
 import ListKit
 
 final class TodoListViewController: UIViewController {
-    
+    // It is similar to @EnvironmentObject on SwiftUI.
     private var store = AppStore.shared
     private var cancellables = Set<AnyCancellable>()
     private var todos: [Todo] = [] {
