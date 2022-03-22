@@ -42,10 +42,6 @@ final class TodoListViewController: UIViewController {
         setupAddButton()
         setupViews()
         setupStore()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         loadTodoList()
     }
     
