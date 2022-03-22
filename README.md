@@ -9,7 +9,8 @@ ListKit + Redux + UIKit Example ;)
 - [x] LocalDBRepository(SQLite) and Unittest it
 - [x] Todo List Scene
 - [x] Add Todo Scene
-- [ ] Todo Detail Scene
+- [x] Todo Detail Scene
+- [x] Update Todo
 - [ ] Done Todo
 - [ ] Delete Todo
 - [ ] Delete All Todos

@@ -1,5 +1,5 @@
 //
-//  AddTodoContent.swift
+//  AddTodoDate.swift
 //  TodoApp
 //
 //  Created by burt on 2022/03/21.
@@ -9,59 +9,63 @@ import UIKit
 import SnapKit
 import ListKit
 
-struct AddTodoContent: Component {
-    typealias Content = AddTodoContentView
+struct TodoDate: Component {
+    typealias Content = TodoDateView
     
-    let contentValue: String
-    var onContentChanged: ((String) -> Void)?
+    let date: Date
+    var onDateChanged: ((Date) -> Void)?
     
     var id: AnyHashable {
         UUID()
     }
     
-    init(content: String, onContentChanged: @escaping (String) -> Void) {
-        self.contentValue = content
-        self.onContentChanged = onContentChanged
+    init(date: Date, onDateChanged: @escaping (Date) -> Void) {
+        self.date = date
+        self.onDateChanged = onDateChanged
     }
     
-    func contentView() -> AddTodoContentView {
-        return AddTodoContentView()
+    func contentView() -> TodoDateView {
+        return TodoDateView()
     }
     
     func layoutSize() -> NSCollectionLayoutSize {
-        return NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(120))
+        return NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(30))
     }
     
     func edgeSpacing() -> NSCollectionLayoutEdgeSpacing? {
         return .init(leading: nil, top: nil, trailing: nil, bottom: .fixed(8.0))
     }
     
-    func render(in content: AddTodoContentView) {
-        content.contentTextView.text = contentValue
-        content.onContentChanged = onContentChanged
+    func render(in content: TodoDateView) {
+        content.datePicker.date = date
+        content.onDateChanged = onDateChanged
     }
 }
 
 
-final class AddTodoContentView: UIView {
+final class TodoDateView: UIView {
     
-    var onContentChanged: ((String) -> Void)?
+    var onDateChanged: ((Date) -> Void)?
     
-    lazy var contentLabel: UILabel = {
+    lazy var dateLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = "CONTENT"
+        label.text = "DATE"
         label.font = UIFont.systemFont(ofSize: UIFont.smallSystemFontSize)
         return label
     }()
     
-    lazy var contentTextView: UITextView = {
-        let textView = UITextView(frame: .zero)
-        textView.delegate = self
-        return textView
+    lazy var datePicker: UIDatePicker = {
+        let picker = UIDatePicker(frame: .zero)
+        picker.preferredDatePickerStyle = .automatic
+        picker.datePickerMode = .dateAndTime
+        picker.locale = Locale(identifier: "ko-KR")
+        picker.timeZone = .autoupdatingCurrent
+        picker.addTarget(self, action: #selector(handleDatePicker(_:)), for: .valueChanged)
+        return picker
     }()
     
     lazy var stackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [self.contentLabel, self.contentTextView])
+        let stack = UIStackView(arrangedSubviews: [self.dateLabel, self.datePicker])
         stack.axis = .vertical
         stack.alignment = .top
         stack.spacing = 6
@@ -96,15 +100,15 @@ final class AddTodoContentView: UIView {
             make.trailing.equalToSuperview().offset(-8)
             make.bottom.equalToSuperview().offset(-16)
         }
-        contentTextView.snp.makeConstraints { make in
+        datePicker.snp.makeConstraints { make in
             make.width.equalToSuperview()
         }
     }
-}
-
-extension AddTodoContentView: UITextViewDelegate {
-    func textViewDidChange(_ textView: UITextView) {
-        onContentChanged?(textView.text ?? "")
+    
+    @objc
+    func handleDatePicker(_ picker: UIDatePicker) {
+        onDateChanged?(picker.date)
     }
 }
-    
+
+
