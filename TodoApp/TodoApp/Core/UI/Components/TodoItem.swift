@@ -15,11 +15,14 @@ struct TodoItem: Component {
     let todo: Todo
     
     var id: AnyHashable {
-        todo.id
+        todo
     }
     
-    init(todo: Todo) {
+    var onClickTodo: ((Todo) -> Void)?
+    
+    init(todo: Todo, onClickTodo: @escaping (Todo) -> Void) {
         self.todo = todo
+        self.onClickTodo = onClickTodo
     }
     
     func contentView() -> TodoItemContentView {
@@ -38,6 +41,9 @@ struct TodoItem: Component {
         content.titleLabel.text = todo.title
         content.contentLabel.text = todo.content
         content.dateLabel.text = DateUtils.dateToString(todo.date)
+        content.onClickContentView = {
+            onClickTodo?(todo)
+        }
     }
 }
 
@@ -77,6 +83,12 @@ final class TodoItemContentView: UIView {
         return stack
     }()
     
+    lazy var tapGesture: UITapGestureRecognizer = {
+        return UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(_:)))
+    }()
+    
+    var onClickContentView: (() -> Void)?
+    
     init() {
         super.init(frame: .zero)
         setupAppearance()
@@ -109,5 +121,12 @@ final class TodoItemContentView: UIView {
         dateLabel.snp.makeConstraints { make in
             make.width.equalToSuperview()
         }
+        
+        self.addGestureRecognizer(self.tapGesture)
+    }
+    
+    @objc
+    func handleTapGesture(_ tap: UITapGestureRecognizer) {
+        onClickContentView?()
     }
 }

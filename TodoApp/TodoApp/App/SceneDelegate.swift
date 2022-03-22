@@ -18,6 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let nvc = UINavigationController(rootViewController: TodoListViewController())
         window.rootViewController = nvc
         window.makeKeyAndVisible()
+        window.overrideUserInterfaceStyle = .light
         self.window = window
     }
 

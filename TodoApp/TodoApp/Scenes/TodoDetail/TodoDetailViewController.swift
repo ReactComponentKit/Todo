@@ -1,8 +1,8 @@
 //
-//  TodoAddViewController.swift
+//  TodoDetailViewController.swift
 //  TodoApp
 //
-//  Created by burt on 2022/03/21.
+//  Created by burt on 2022/03/22.
 //
 
 import UIKit
@@ -10,7 +10,7 @@ import Combine
 import SnapKit
 import ListKit
 
-final class TodoAddViewController: UIViewController {
+final class TodoDetailViewController: UIViewController {
     // It is similar to @EnvironmentObject on SwiftUI.
     private var store = AppStore.shared
     private var cancellables = Set<AnyCancellable>()
@@ -20,7 +20,7 @@ final class TodoAddViewController: UIViewController {
     }
     
     private lazy var saveButtonItem = {
-        return UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(onClickSaveButton(_:)))
+        return UIBarButtonItem(title: "Update", style: .plain, target: self, action: #selector(onClickUpdateButton(_:)))
     }()
     
     private lazy var collectionView: UICollectionView = {
@@ -29,6 +29,15 @@ final class TodoAddViewController: UIViewController {
     }()
     
     private lazy var renderer = ComposeRenderer(dataSource: PlainDataSource(), delegate: nil, cellClass: nil)
+    
+    init(todo: Todo) {
+        super.init(nibName: nil, bundle: nil)
+        self.store.todoDetail.set(todo: todo)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +50,7 @@ final class TodoAddViewController: UIViewController {
     }
     
     private func setupTitle() {
-        self.title = "Add Todo!"
+        self.title = "Todo Detail!"
     }
     
     private func setupDoneButton() {
@@ -57,9 +66,7 @@ final class TodoAddViewController: UIViewController {
     }
     
     private func setupStore() {
-        // it is not necessary if we've injected a new store but we use a singleton store.
-        store.todoAdd.reset()
-        store.$didFinishAddTodo
+        store.$didFinishUpdateTodo
             .receive(on: RunLoop.main)
             .filter { $0 == true }
             .compactMap { $0 }
@@ -67,7 +74,7 @@ final class TodoAddViewController: UIViewController {
                 if value {
                     self?.dismiss(animated: true)
                 } else {
-                    let message = self?.store.todoAdd.state.error.localizedDescription
+                    let message = self?.store.todoDetail.state.error.localizedDescription
                     let alert = UIAlertController(title: "Error occurred", message: message, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default))
                     self?.present(alert, animated: true)
@@ -81,16 +88,16 @@ final class TodoAddViewController: UIViewController {
             Section(id: Sections.group) {
                 VGroup(width: .fractionalWidth(1.0), height: .estimated(30)) {
                     // Don't use two-way binding
-                    TodoTitle(title: store.todoAdd.state.title) { [weak store] newTitle in
-                        store?.todoAdd.set(title: newTitle)
+                    TodoTitle(title: store.todoDetail.state.todo.title) { [weak store] newTitle in
+                        store?.todoDetail.set(title: newTitle)
                     }
                     // Don't use two-way binding
-                    TodoContent(content: store.todoAdd.state.content) { [weak store] newContent in
-                        store?.todoAdd.set(content: newContent)
+                    TodoContent(content: store.todoDetail.state.todo.content) { [weak store] newContent in
+                        store?.todoDetail.set(content: newContent)
                     }
                     // Don't use two-way binding
-                    TodoDate(date: store.todoAdd.state.date) { [weak store] newDate in
-                        store?.todoAdd.set(date: newDate)
+                    TodoDate(date: store.todoDetail.state.todo.date) { [weak store] newDate in
+                        store?.todoDetail.set(date: newDate)
                     }
                 }
             }
@@ -99,18 +106,17 @@ final class TodoAddViewController: UIViewController {
     }
 }
 
-extension TodoAddViewController {
+extension TodoDetailViewController {
     @objc
-    func onClickSaveButton(_ sender: UIBarButtonItem) {
-        
-        if (store.todoAdd.state.title.isEmpty) {
+    func onClickUpdateButton(_ sender: UIBarButtonItem) {
+        if (store.todoDetail.state.todo.title.isEmpty) {
             let alert = UIAlertController(title: "Please enter title", message: nil, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
             self.present(alert, animated: true)
             return
         }
         
-        if (store.todoAdd.state.content.isEmpty) {
+        if (store.todoDetail.state.todo.content.isEmpty) {
             let alert = UIAlertController(title: "Please enter content", message: nil, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
             self.present(alert, animated: true)
@@ -118,7 +124,7 @@ extension TodoAddViewController {
         }
         
         Task {
-            await store.addNewTodoAction(title: store.todoAdd.state.title, content: store.todoAdd.state.content, date: store.todoAdd.state.date)
+            await store.updateTodoAction(todo: store.todoDetail.state.todo)
         }
     }
 }

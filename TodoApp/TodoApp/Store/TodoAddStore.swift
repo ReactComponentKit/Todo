@@ -20,7 +20,6 @@ class TodoAddStore: Store<TodoAddState> {
     @Published
     var didFinishAddTodo: Bool? = nil
     
-    
     private let repository: Repository
     init(repository: Repository) {
         self.repository = repository

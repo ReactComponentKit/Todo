@@ -77,7 +77,7 @@ final class TodoListViewController: UIViewController {
     }
     
     private func render() {        
-        renderer.render(animated: true) {
+        renderer.render() {
             Section(id: Sections.list) {
                 if todos.isEmpty {
                     VGroup(width: .fractionalWidth(1.0), height: .fractionalHeight(1.0)) {
@@ -85,7 +85,9 @@ final class TodoListViewController: UIViewController {
                     }
                 } else {
                     VGroup(of: todos, width: .fractionalWidth(1.0), height: .estimated(30)) { todo in
-                        TodoItem(todo: todo)
+                        TodoItem(todo: todo) { [weak self] todo in
+                            self?.onClickTodo(item: todo)
+                        }
                     }
                 }
             }
@@ -98,6 +100,12 @@ extension TodoListViewController {
     @objc
     func onClickAddTodoButton(_ sender: UIBarButtonItem) {
         let nvc = UINavigationController(rootViewController: TodoAddViewController())
+        self.present(nvc, animated: true)
+    }
+    
+    func onClickTodo(item: Todo) {
+        let vc = TodoDetailViewController(todo: item)
+        let nvc = UINavigationController(rootViewController: vc)
         self.present(nvc, animated: true)
     }
 }
